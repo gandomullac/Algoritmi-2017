@@ -7,8 +7,8 @@
 #include <time.h>
 #include <limits.h>
 
-#define MAX_LUNGHEZZA 1001
-#define NUM_ESPERIMENTI 100
+#define MAX_LUNGHEZZA 3001
+#define NUM_ESPERIMENTI 300
 #define REP_PER_ESPERIMENTO 100
 #define SALTO 10
 
@@ -323,84 +323,84 @@ int main()
 		}
 		fine = clock();
 		misurato = fine - inizio;
-		totale_insertion_sort += misurato;
+		totale_insertion_sort = misurato;
 
 		//merge sort int max
 		inizio = clock();
 		for (indice_ripetizione = 0; indice_ripetizione < REP_PER_ESPERIMENTO; indice_ripetizione++)
 		{
-			mergeSortIntMax(a, 0, lunghezza_corrente);
+			mergeSortIntMax(a, 0, lunghezza_corrente-1);
 			CopiaArray(temp, a, lunghezza_corrente);
 		}
 		fine = clock();
 		misurato = fine - inizio;
-		totale_merge_sort_int_max += misurato;
+		totale_merge_sort_int_max = misurato;
 
 		//merge sort index
 		inizio = clock();
 		for (indice_ripetizione = 0; indice_ripetizione < REP_PER_ESPERIMENTO; indice_ripetizione++)
 		{
-			mergeSortIndex(a, 0, lunghezza_corrente);
+			mergeSortIndex(a, 0, lunghezza_corrente-1);
 			CopiaArray(temp, a, lunghezza_corrente);
 		}
 		fine = clock();
 		misurato = fine - inizio;
-		totale_merge_sort_index += misurato;
+		totale_merge_sort_index = misurato;
 
 		//hybrid sort int max
 		inizio = clock();
 		for (indice_ripetizione = 0; indice_ripetizione < REP_PER_ESPERIMENTO; indice_ripetizione++)
 		{
-			hybridSortIntMax(a, 0, lunghezza_corrente);
+			hybridSortIntMax(a, 0, lunghezza_corrente-1);
 			CopiaArray(temp, a, lunghezza_corrente);
 		}
 		fine = clock();
 		misurato = fine - inizio;
-		totale_hybrid_sort_int_max += misurato;
+		totale_hybrid_sort_int_max = misurato;
 
 		//hybrid sort index
 		inizio = clock();
 		for (indice_ripetizione = 0; indice_ripetizione < REP_PER_ESPERIMENTO; indice_ripetizione++)
 		{
-			hybridSortIndex(a, 0, lunghezza_corrente);
+			hybridSortIndex(a, 0, lunghezza_corrente-1);
 			CopiaArray(temp, a, lunghezza_corrente);
 		}
 		fine = clock();
 		misurato = fine - inizio;
-		totale_hybrid_sort_index += misurato;
+		totale_hybrid_sort_index = misurato;
 
 		//merge in place
 		inizio = clock();
 		for (indice_ripetizione = 0; indice_ripetizione < REP_PER_ESPERIMENTO; indice_ripetizione++)
 		{
-			inPlaceMergeSort(a, 0, lunghezza_corrente);
+			inPlaceMergeSort(a, 0, lunghezza_corrente-1);
 			CopiaArray(temp, a, lunghezza_corrente);
 		}
 		fine = clock();
 		misurato = fine - inizio;
-		totale_merge_sort_in_place += misurato;
+		totale_merge_sort_in_place = misurato;
 
 		//standard quicksort
 		inizio = clock();
 		for (indice_ripetizione = 0; indice_ripetizione < REP_PER_ESPERIMENTO; indice_ripetizione++)
 		{
-			standardQuicksort(a, 0, lunghezza_corrente);
+			standardQuicksort(a, 0, lunghezza_corrente-1);
 			CopiaArray(temp, a, lunghezza_corrente);
 		}
 		fine = clock();
 		misurato = fine - inizio;
-		totale_standard_quicksort += misurato;
+		totale_standard_quicksort = misurato;
 
 		//randomized quicksort
 		inizio = clock();
 		for (indice_ripetizione = 0; indice_ripetizione < REP_PER_ESPERIMENTO; indice_ripetizione++)
 		{
-			randomizedQuicksort(a, 0, lunghezza_corrente);
+			randomizedQuicksort(a, 0, lunghezza_corrente-1);
 			CopiaArray(temp, a, lunghezza_corrente);
 		}
 		fine = clock();
 		misurato = fine - inizio;
-		totale_randomized_quicksort += misurato;
+		totale_randomized_quicksort = misurato;
 
 		fprintf(fp, "%d\t%lu\t%lu\t%lu\t%lu\t%lu\t%lu\t%lu\t%lu \n", lunghezza_corrente, totale_insertion_sort,
 				totale_merge_sort_int_max, totale_merge_sort_index, totale_hybrid_sort_int_max,
